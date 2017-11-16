@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeBaseOptions : StripeBaseOptions
+    public class StripeBaseOptions
     {
         public void AddExtraParam(string key, string value) {
             ExtraParams.Add(key, value);
