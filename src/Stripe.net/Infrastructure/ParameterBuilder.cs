@@ -33,6 +33,16 @@ namespace Stripe.Infrastructure
                             RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, obj);
                     }
                 }
+
+                var field = obj.GetType().GetRuntimeField("ExtraParams");
+                if (field != null)
+                {
+                    foreach (KeyValuePair<string, string> pair in (Dictionary<string, string>) field.GetValue(obj))
+                    {
+                        var key = WebUtility.UrlEncode(pair.Key);
+                        RequestStringBuilder.ApplyParameterToRequestString(ref requestString, key, pair.Value);
+                    }
+                }
             }
 
             if (service != null)
