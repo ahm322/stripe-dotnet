@@ -11,7 +11,7 @@ namespace Stripe.Tests.Xunit
 {
     public class adding_extra_parameters
     {
-        public class TestOptions : StripeParamsBase
+        public class TestOptions : StripeBaseOptions
         {
             [JsonProperty("a_string")]
             public string AString { get; set; }
